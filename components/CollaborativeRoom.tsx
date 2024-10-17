@@ -102,6 +102,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
 
               {loading && <p className="text-sm text-gray-400">saving...</p>}
             </div>
+            
             <div className="flex w-full flex-1 justify-end gap-2 sm:gap-3">
               <ActiveCollaborators />
 
@@ -112,12 +113,15 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
                 currentUserType={currentUserType}
               />
 
+
               <SignedOut>
                 <SignInButton />
               </SignedOut>
               <SignedIn>
                 <UserButton />
               </SignedIn>
+
+              
             </div>
           </Header>
         <Editor roomId={roomId} currentUserType={currentUserType} />

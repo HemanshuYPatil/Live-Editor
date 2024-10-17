@@ -4,9 +4,11 @@ import UserTypeSelector from './UserTypeSelector';
 import { Button } from './ui/button';
 import { removeCollaborator, updateDocumentAccess } from '@/lib/actions/room.actions';
 
+
 const Collaborator = ({ roomId, creatorId, collaborator, email, user }: CollaboratorProps) => {
   const [userType, setUserType] = useState(collaborator.userType || 'viewer');
   const [loading, setLoading] = useState(false);
+
 
   const shareDocumentHandler = async (type: string) => {
     setLoading(true);
@@ -55,16 +57,25 @@ const Collaborator = ({ roomId, creatorId, collaborator, email, user }: Collabor
       {creatorId === collaborator.id ? (
         <p className="text-sm text-blue-100">Owner</p>
       ): (
+        
         <div className="flex items-center">
-          <UserTypeSelector 
-            userType={userType as UserType}
-            setUserType={setUserType || 'viewer'}
-            onClickHandler={shareDocumentHandler}
-          />
-          <Button type="button" onClick={() => removeCollaboratorHandler(collaborator.email)}>
-            Remove
-          </Button>
-        </div>
+        {creatorId === user.id ? (
+          <>
+            <UserTypeSelector
+              userType={userType as UserType}
+              setUserType={setUserType || 'viewer'}
+              onClickHandler={shareDocumentHandler}
+              
+            />
+            <Button type="button" onClick={() => removeCollaboratorHandler(collaborator.email)} >
+              Remove
+            </Button>
+          </>
+        ) : (
+          <p>Not Accessed</p>
+        )}
+      </div>
+      
       )}
     </li>
   )
