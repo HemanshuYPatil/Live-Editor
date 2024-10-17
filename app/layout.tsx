@@ -41,8 +41,8 @@ export default function RootLayout({
         >
           <Provider>{children}</Provider>
 
-          <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-          <script src="https://files.bpcontent.cloud/2024/10/16/19/20241016195026-S6RYZZEG.js"></script>
+          <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js" async></script>
+          <script src="https://files.bpcontent.cloud/2024/10/16/19/20241016195026-S6RYZZEG.js" async></script>
         </body>
       </html>
     </ClerkProvider>
